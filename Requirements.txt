@@ -1,3 +1,13 @@
 1. Snowflake deployment using CICD pipeline (github action)
 2. Integration Github with snowflake
-3.
+3. Snowflake account setup
+4. snowflake sceret setup in Github
+5. testing workflow
+6. branch rules, reviews for pull request
+7. validation of script running ad deploing in snowflake
+8. deployng testing automation script in aws server EC2 or Lambda
+9. S3 bucket setup
+10. Snowpipe setup
+11. aws glue
+12. adding new functionality
+13. ML
