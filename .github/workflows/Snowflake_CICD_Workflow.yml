@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Snowflake Connector for Python
         run: |
-          pip install snowflake-connector-python
+          pip install pip install snowflake-connector-python
 
       - name: Run SQL Scripts on Snowflake
         env:
