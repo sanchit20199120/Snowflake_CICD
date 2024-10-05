@@ -1,4 +1,4 @@
-name: Snowflake CI/CD
+name: Snowflake_CICD_Workflow
 
 # Controls when action will be trigger
 on:
