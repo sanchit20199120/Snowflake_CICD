@@ -4,15 +4,15 @@ name: Snowflake_CICD_Workflow
 on:
   push:
     branches:
-      - dev
-      - qa
-      - uat
+      - DEV
+      - QA
+      - UAT
       - main  # Assume main is for PROD
   pull_request:
     branches:
-      - dev
-      - qa
-      - uat
+      - DEV
+      - QA
+      - UAT
       - main
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'
 
       - name: Install Snowflake Connector for Python
         run: |
@@ -73,3 +73,4 @@ finally:
     cs.close()
     ctx.close()
           "
+
