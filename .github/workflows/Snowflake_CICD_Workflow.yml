@@ -21,10 +21,6 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install Snowflake Connector for Python
-        run: |
-          pip install pip install snowflake-connector-python
-
       - name: Run SQL Scripts on Snowflake
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
