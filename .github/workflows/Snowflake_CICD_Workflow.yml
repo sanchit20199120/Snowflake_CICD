@@ -43,8 +43,7 @@ ctx = snowflake.connector.connect(
     password='$SF_PASSWORD',
     account='$SF_ACCOUNT',
     warehouse='$SF_WAREHOUSE',
-    database='$SF_DATABASE',
-    schema='$SF_SCHEMA'
+    database='$SF_DATABASE'
 )
 
 # Create a cursor
