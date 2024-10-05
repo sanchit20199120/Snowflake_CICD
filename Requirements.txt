@@ -1,0 +1,3 @@
+1. Snowflake deployment using CICD pipeline (github action)
+2. Integration Github with snowflake
+3.
