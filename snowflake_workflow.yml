@@ -3,15 +3,15 @@ name: Snowflake_CI/CD_Workflow
 on:
   push:
     branches:
-      - dev
-      - qa
-      - uat
+      - DEV
+      - QA
+      - UAT
       - main  # Assume main is for PROD
   pull_request:
     branches:
-      - dev
-      - qa
-      - uat
+      - DEV
+      - QA
+      - UAT
       - main
 
 jobs:
