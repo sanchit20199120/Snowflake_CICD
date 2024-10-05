@@ -1,26 +1,16 @@
-name: Snowflake_CI/CD_Workflow
+name: Snowflake_CICD_Workflow
 
 on:
   push:
     branches:
-      - DEV
-      - QA
-      - UAT
-      - main  # Assume main is for PROD
+      - main
   pull_request:
     branches:
-      - DEV
-      - QA
-      - UAT
       - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        environment: [DEV, QA, UAT, PROD]
 
     steps:
       - name: Checkout code
@@ -29,23 +19,20 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.8'
 
       - name: Install Snowflake Connector for Python
         run: |
           pip install snowflake-connector-python
 
-      - name: Set environment variables
-        run: echo "ENVIRONMENT=${{ matrix.environment }}" >> $GITHUB_ENV
-
       - name: Run SQL Scripts on Snowflake
         env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets['SNOWFLAKE_ACCOUNT_' + env.ENVIRONMENT] }}
-          SNOWFLAKE_USER: ${{ secrets['SNOWFLAKE_USER_' + env.ENVIRONMENT] }}
-          SNOWFLAKE_PASSWORD: ${{ secrets['SNOWFLAKE_PASSWORD_' + env.ENVIRONMENT] }}
-          SNOWFLAKE_DATABASE: ${{ secrets['SNOWFLAKE_DATABASE_' + env.ENVIRONMENT] }}
-          SNOWFLAKE_WAREHOUSE: ${{ secrets['SNOWFLAKE_WAREHOUSE_' + env.ENVIRONMENT] }}
-          SNOWFLAKE_SCHEMA: ${{ secrets['SNOWFLAKE_SCHEMA_' + env.ENVIRONMENT] }}
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
         run: |
           python -c "
 import snowflake.connector
