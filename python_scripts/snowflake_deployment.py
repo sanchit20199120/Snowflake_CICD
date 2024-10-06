@@ -1,16 +1,19 @@
 import snowflake.connector
 
 
-user='$SNOWFLAKE_USER'
-password='$SNOWFLAKE_PASSWORD'
-account='$SNOWFLAKE_ACCOUNT'
-warehouse='$SNOWFLAKE_WAREHOUSE'
-database='$SNOWFLAKE_DATABASE'
-schema='$SNOWFLAKE_SCHEMA'
 
-print(user)
-print(account)
 # Create a connection to Snowflake
+
+ctx = snowflake.connector.connect(
+    user='Sanchit20',
+    password='20Sep199120@',
+    account='hwauhjp-iqb15817',
+    warehouse='COMPUTE_WH',
+    database='Data_Quality',
+    role = 'ACCOUNTADMIN',
+    schema ='Quality'
+)
+'''
 ctx = snowflake.connector.connect(
     user='$SNOWFLAKE_USER',
     password='$SNOWFLAKE_PASSWORD',
@@ -19,6 +22,7 @@ ctx = snowflake.connector.connect(
     database='$SNOWFLAKE_DATABASE',
     schema='$SNOWFLAKE_SCHEMA'
 )
+'''
 
 print("snowflake connection successfull")
 
