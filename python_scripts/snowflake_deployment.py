@@ -1,28 +1,15 @@
 import snowflake.connector
-
-
-
+import os
 # Create a connection to Snowflake
 
 ctx = snowflake.connector.connect(
-    user='Sanchit20',
-    password='20Sep199120@',
-    account='hwauhjp-iqb15817',
-    warehouse='COMPUTE_WH',
-    database='Data_Quality',
-    role = 'ACCOUNTADMIN',
-    schema ='Quality'
+    user=os.getenv('SNOWFLAKE_USER'),
+    password=os.getenv('SNOWFLAKE_PASSWORD'),
+    account=os.getenv('SNOWFLAKE_ACCOUNT'),
+    warehouse=os.getenv('SNOWFLAKE_WAREHOUSE'),
+    database=os.getenv('SNOWFLAKE_DATABASE'),
+    schema=os.getenv('SNOWFLAKE_SCHEMA')
 )
-'''
-ctx = snowflake.connector.connect(
-    user='$SNOWFLAKE_USER',
-    password='$SNOWFLAKE_PASSWORD',
-    account='$SNOWFLAKE_ACCOUNT',
-    warehouse='$SNOWFLAKE_WAREHOUSE',
-    database='$SNOWFLAKE_DATABASE',
-    schema='$SNOWFLAKE_SCHEMA'
-)
-'''
 
 print("snowflake connection successfull")
 
