@@ -34,4 +34,4 @@ jobs:
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
           SNOWFLAKE_SCHEMA: ${{ secrets.SF_SCHEMA }}
         run: |
-          python python_scripts/snowflake_deployment.py
+          python3 python_scripts/snowflake_deployment.py
