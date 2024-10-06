@@ -80,6 +80,7 @@ jobs:
         run: |
           pip install snowflake-connector-python   
 
+
       - name: Deploy to QA Snowflake
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
