@@ -13,3 +13,5 @@
 12. adding new functionality
 13. ML
 14. matplotlib to create dashboard - bar chart
+15. merge code to other branches using workflow
+16. deployment in diffrent databases using environments using workflow
