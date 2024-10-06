@@ -11,4 +11,3 @@
 11. aws glue
 12. adding new functionality
 13. ML
-14. matplotlib graphs
