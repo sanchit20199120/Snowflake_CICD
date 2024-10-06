@@ -27,7 +27,7 @@ jobs:
         run: |
           pip install snowflake-connector-python
 
-      - name: Run SQL Scripts on Snowflake
+      - name: Run SQL Scripts on DEV Snowflake
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SF_USER }}
