@@ -68,6 +68,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Check Python version
+        run: python --version
+
+      - name: Install Snowflake Connector for Python
+        run: |
+          pip install snowflake-connector-python   
+
       - name: Deploy to QA Snowflake
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
