@@ -2,12 +2,12 @@ import snowflake.connector
 
 # Create a connection to Snowflake
 ctx = snowflake.connector.connect(
-    user='$SNOWFLAKE_USER',
-    password='$SNOWFLAKE_PASSWORD',
-    account='$SNOWFLAKE_ACCOUNT',
-    warehouse='$SNOWFLAKE_WAREHOUSE',
-    database='$SNOWFLAKE_DATABASE',
-    schema='$SNOWFLAKE_SCHEMA'
+    user='$SF_USER',
+    password='$SF_PASSWORD',
+    account='$SF_ACCOUNT',
+    warehouse='$SF_WAREHOUSE',
+    database='$SF_DATABASE',
+    schema='$SF_SCHEMA'
 )
 
 print("snowflake connection successfull")
