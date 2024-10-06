@@ -1,13 +1,15 @@
 name: Snowflake_CICD_Workflow
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
+    branches: [DEV]
 
 jobs:
-  deploy:
+  Build:
     runs-on: ubuntu-latest
+    environment:
+      name: Build
 
     steps:
       - name: Checkout code
@@ -34,4 +36,44 @@ jobs:
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
           SNOWFLAKE_SCHEMA: ${{ secrets.SF_SCHEMA }}
         run: |
-          python3 python_scripts/snowflake_deployment.py
+          python python_scripts/snowflake_deployment.py
+
+  DeployQA:
+    name: Deploy to QA
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment:
+      name: QA
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Merge DEV-->QA
+        uses: devmasx/merge-branch@v1.2.1
+        with:
+          type: now
+          from_branch: DEV
+          target_branch: QA
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Check Python version
+        run: python --version
+
+      - name: Install Snowflake Connector for Python
+        run: |
+          pip install snowflake-connector-python
+
+      - name: Run SQL Scripts on Snowflake
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SF_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          SNOWFLAKE_DATABASE: ${{ secrets.SF_DATABASE }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SNOWFLAKE_SCHEMA: ${{ secrets.SF_SCHEMA }}
+        run: |
+          python python_scripts/snowflake_deployment.py
