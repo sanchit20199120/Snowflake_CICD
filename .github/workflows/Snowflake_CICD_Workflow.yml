@@ -55,7 +55,7 @@ jobs:
         run: |
           git fetch origin
           git checkout QA
-          git merge DEV --no-ff -m "Merge DEV into QA"
+          git merge dev --no-ff --allow-unrelated-histories -m "Merge DEV into QA"
           git push origin QA
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
