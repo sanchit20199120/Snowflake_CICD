@@ -12,10 +12,12 @@ def get_dsn(dsn_name:str, dsn_prefix: str = 'secret_', aws_region_name: str = 'u
 #create a Secret Manager Client
 
 # add aws_access_key_id  and aws_secret_access_key to get the access to aws account
+
     session = boto3.session.Session(
-        aws_access_key_id = "AKIA4AQ3UG5DDLHBWKE4",
-        aws_secret_access_key = "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"
+        aws_access_key_id="aws_access_key_id",
+        aws_secret_access_key="aws_secret_access_key "
     )
+
     client = session.client(
         service_name='secretsmanager',
         region_name=aws_region_name
